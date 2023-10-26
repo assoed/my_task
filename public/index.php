@@ -35,4 +35,5 @@ $POSTLoader = new POSTProductLoader($productSchemeValidator,$POSTLoader,$product
 
 $productValidator = new ProductValidator();
 $validationStatus = $productValidator->validate($FileProductLoaderXML->load('/dataXML.xml'));
+
 var_dump($validationStatus);
