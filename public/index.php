@@ -13,8 +13,10 @@ require '../src/Validator/ProductValidator/ProductValidator.php';
 
 use Controllers\ProductController;
 
-$filepath='/dataXML.xml';
+$filepath='/dataCSV.csv';
 $productController = new ProductController();
-$productsStatus = $productController->handleRequest('xml',$filepath);
+
+//dataType post || xml || csv
+$productsStatus = $productController->handleRequest('csv',$filepath);
 
 echo json_encode($productsStatus);

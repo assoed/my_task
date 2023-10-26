@@ -1,2 +1,10 @@
 <?xml version="1.0"?>
-<data><product><vendorCode>122-234123</vendorCode><name>127543</name><price>13,44</price><description>Lorem  dolor sit amet,  sunt in culpa qui officia deserunt mollit anim id est laborum.</description></product></data>
+<data>
+    <product>
+        <vendorCode>122-234123</vendorCode>
+        <name>127543</name>
+        <price>13,44</price>
+        <description>Lorem  dolor sit amet,  sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </description>
+    </product>
+</data>

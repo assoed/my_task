@@ -17,7 +17,7 @@ class POSTProductLoader
         $this->productCreator = $productCreator;
 
     }
-    public function load(array $array):array{
+    public function load(string $array):array{
 
         $data = $this->POSTLoader->load($array) ;
         $productCreator = new ProductCreator($this->schemeValidator);
