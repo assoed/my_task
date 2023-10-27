@@ -3,7 +3,7 @@
 namespace Loaders;
 class FileXMLLoader
 {
-    public function load($filePath):array{
+    public function getDataFromFile($filePath):array{
         $filePath = __DIR__ . '/../../'.$filePath;
         $xmlStr = file_get_contents($filePath);
         $xmlFile = simplexml_load_string( $xmlStr);

@@ -18,10 +18,10 @@ class  FileProductLoaderXML
     }
     public function load(string $path):array{
 
-            $data = $this->fileXMLLoader->load($path);
+            $data = $this->fileXMLLoader->getDataFromFile($path);
 
             $productCreator = new ProductCreator($this->schemeValidator);
 
-            return $productCreator->createProducts($data);
+            return $productCreator->getProducts($data);
     }
 }

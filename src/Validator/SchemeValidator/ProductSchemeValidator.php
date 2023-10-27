@@ -6,7 +6,7 @@ class ProductSchemeValidator
 {
     private array $requiredFields = ['name','vendorCode','price','description'];
 
-    public function validate(array $data):bool
+    public function isValid(array $data):bool
     {
         if (empty($data)){
             return false;

@@ -17,11 +17,11 @@ class POSTProductLoader
         $this->productCreator = $productCreator;
 
     }
-    public function load(string $array):array{
+    public function getProductsFromPost(string $array):array{
 
-        $data = $this->POSTLoader->load($array) ;
+        $data = $this->POSTLoader->getDataFromPost($array) ;
         $productCreator = new ProductCreator($this->schemeValidator);
 
-        return $productCreator->createProducts($data);
+        return $productCreator->getProducts($data);
     }
 }

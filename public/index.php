@@ -17,6 +17,6 @@ $filepath='/dataCSV.csv';
 $productController = new ProductController();
 
 //dataType post || xml || csv
-$productsStatus = $productController->handleRequest('csv',$filepath);
+$productsStatus = $productController->getRequestStatus('csv',$filepath);
 
 echo json_encode($productsStatus);

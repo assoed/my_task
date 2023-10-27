@@ -24,11 +24,11 @@ class FileProductLoaderCSV
     /**
      * @throws \Exception
      */
-    public function load(string $path):array{
-    $data = $this->fileCSVLoader->load($path);
+    public function getProductsFromCSV(string $path):array{
+    $data = $this->fileCSVLoader->getDataFromFile($path);
 
     $productCreator = new ProductCreator($this->schemeValidator);
-    return $productCreator->createProducts($data);
+    return $productCreator->getProducts($data);
 
     }
 

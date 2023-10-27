@@ -13,11 +13,11 @@ class ProductCreator
     ){
         $this->schemeValidator = $schemeValidator;
     }
-    public  function createProducts($data)
+    public  function getProducts($data)
     {
         $products = [];
         foreach ($data as $value){
-            if(!$this->schemeValidator->validate($value)){
+            if(!$this->schemeValidator->isValid($value)){
                 throw new Exception("Invalid");
             }
             $products[] = new Product($value['name'],$value['vendorCode'],$value['price'],$value['description']);

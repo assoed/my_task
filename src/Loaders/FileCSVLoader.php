@@ -7,9 +7,9 @@ class FileCSVLoader
     private $headers;
 
 
-    public function load(string $filePath){
+    public function getDataFromFile(string $filePath){
         $dataArray = [];
-        $data = $this->ReadData($filePath);
+        $data = $this->getData($filePath);
 
         foreach ($data as $value){
             $dataArray[] = $value;
@@ -17,7 +17,7 @@ class FileCSVLoader
         return $dataArray;
     }
 
-    public function readData(string $filePath): Generator
+    public function getData(string $filePath): Generator
     {
         $filePath = __DIR__ . '../../..'.$filePath;
         $fileHandle = fopen($filePath, 'r');

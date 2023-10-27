@@ -13,7 +13,7 @@ use Validator\ProductValidator\ProductValidator;
 class ProductController
 {
 
-    public function handleRequest($dataType,$filePath){
+    public function getRequestStatus($dataType,$filePath){
         $productLoader = null;
         $productValidator = new ProductValidator();
         $schemeValidator = new ProductSchemeValidator();
@@ -36,7 +36,7 @@ class ProductController
 
         $products = $productLoader->load($filePath);
 
-        return $productValidator->validate($products);
+        return $productValidator->getValidationStatus($products);
     }
 
 

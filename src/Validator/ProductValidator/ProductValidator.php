@@ -3,7 +3,8 @@
 namespace Validator\ProductValidator;
 
 use Models\Product;
-
+use Cleaners\ProductCleaner;
+use Converters\ProductUTF8Converter;
 class ProductValidator
 {
     const MAX_NAME_LENGTH = 64;
@@ -14,15 +15,17 @@ class ProductValidator
     const MAX_VENDOR_CODE_LENGTH = 10;
 
 
-    public function validate(array $productsArray): array
+    public function getValidationStatus(array $productsArray): array
     {
-        $validationStatuses = [];
+        $cleaner = new ProductCleaner();
+        $converter = new ProductUTF8Converter();
+        $validationStatus = [];
         foreach ($productsArray as $data){
-        $data = $this->convertInputDataToUTF8($data);
-        $data = $this->dataSecurityCleanUp($data);
-        $validationStatuses[] = $this->getInputDataValidationStatus($data);
+        $data = $converter->getconvertedDataToUTF8($data);
+        $data = $cleaner->getDataCleanSecurity($data);
+        $validationStatus[] = $this->getInputDataValidationStatus($data);
         }
-        return $validationStatuses;
+        return $validationStatus;
     }
 
     private function getInputDataValidationErrors(object $product): array
@@ -81,23 +84,5 @@ class ProductValidator
 
 
 
-
-    private function dataSecurityCleanUp(Product $product): Product
-    {
-
-        foreach ($product as $key => $value) {
-            $product->$key = trim(htmlspecialchars(strip_tags($value)));
-        }
-        return $product;
-    }
-
-
-    private function convertInputDataToUTF8(Product $product): Product
-    {
-        foreach ($product as $key => $value) {
-            $product->$key  = mb_convert_encoding($value, 'UTF-8', 'Windows-1251');
-        }
-        return $product;
-    }
 
 }
