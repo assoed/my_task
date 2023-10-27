@@ -2,7 +2,7 @@
 
 namespace Cleaners;
 
-use Models\Product;
+use Entity\Product;
 
 class ProductCleaner
 {

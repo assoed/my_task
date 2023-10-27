@@ -6,11 +6,12 @@ require '../src/Loaders/FileProductLoaderCSV.php';
 require '../src/Loaders/FileProductLoaderXML.php';
 require '../src/Creators/ProductCreator.php';
 require '../src/Validator/SchemeValidator/ProductSchemeValidator.php';
-require '../src/Models/Product.php';
+require '../src/Entity/Product.php';
 require '../src/Loaders/POSTProductLoader.php';
 require '../src/Loaders/POSTLoader.php';
 require '../src/Validator/ProductValidator/ProductValidator.php';
-
+require '../src/Cleaners/ProductCleaner.php';
+ require '../src/Converters/ProductUTF8Converter.php';
 use Controllers\ProductController;
 
 $filepath='/dataCSV.csv';

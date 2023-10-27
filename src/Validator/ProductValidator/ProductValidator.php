@@ -2,9 +2,9 @@
 
 namespace Validator\ProductValidator;
 
-use Models\Product;
 use Cleaners\ProductCleaner;
 use Converters\ProductUTF8Converter;
+
 class ProductValidator
 {
     const MAX_NAME_LENGTH = 64;

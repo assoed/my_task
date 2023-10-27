@@ -1,7 +1,7 @@
 <?php
 namespace Creators;
+use Entity\Product;
 use Exception;
-use Models\Product;
 use Validator\SchemeValidator\ProductSchemeValidator;
 
 class ProductCreator

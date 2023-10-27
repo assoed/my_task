@@ -16,7 +16,7 @@ class  FileProductLoaderXML
         $this->fileXMLLoader = $fileXMLLoader;
         $this->productCreator = $productCreator;
     }
-    public function load(string $path):array{
+    public function getProductsFromXML(string $path):array{
 
             $data = $this->fileXMLLoader->getDataFromFile($path);
 

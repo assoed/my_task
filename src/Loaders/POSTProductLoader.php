@@ -17,9 +17,9 @@ class POSTProductLoader
         $this->productCreator = $productCreator;
 
     }
-    public function getProductsFromPost(string $array):array{
+    public function getProductsFromPost():array{
 
-        $data = $this->POSTLoader->getDataFromPost($array) ;
+        $data = $this->POSTLoader->getDataFromPost() ;
         $productCreator = new ProductCreator($this->schemeValidator);
 
         return $productCreator->getProducts($data);

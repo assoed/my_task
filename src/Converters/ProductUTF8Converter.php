@@ -1,7 +1,7 @@
 <?php
 
 namespace Converters;
-use Models\Product;
+use Entity\Product;
 
 class ProductUTF8Converter
 {

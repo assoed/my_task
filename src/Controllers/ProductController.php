@@ -19,22 +19,26 @@ class ProductController
         $schemeValidator = new ProductSchemeValidator();
         $productCreator = new ProductCreator($schemeValidator);
 
+        $products = array();
         switch ($dataType){
             case 'csv':
                 $fileCSVLoader = new FileCSVLoader();
                 $productLoader = new FileProductLoaderCSV($schemeValidator,$fileCSVLoader,$productCreator);
+                $products = $productLoader->getProductsFromCSV($filePath);
                 break;
             case 'xml':
                 $fileXMLLoader = new FileXMLLoader();
                 $productLoader = new FileProductLoaderXML($schemeValidator,$fileXMLLoader,$productCreator);
+                $products = $productLoader->getProductsFromXML($filePath);
                 break;
             case 'post';
                 $postLoader = new POSTLoader();
                 $productLoader = new POSTProductLoader($schemeValidator,$postLoader,$productCreator);
+                $products = $productLoader->getProductsFromPost();
 
         }
 
-        $products = $productLoader->load($filePath);
+
 
         return $productValidator->getValidationStatus($products);
     }
