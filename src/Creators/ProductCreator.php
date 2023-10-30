@@ -1,12 +1,12 @@
 <?php
 namespace Creators;
-use Entity\Product;
 use Exception;
+use Models\ProductModel;
 use Validator\SchemeValidator\ProductSchemeValidator;
 
 class ProductCreator
 {
-    private $schemeValidator;
+    private object $schemeValidator;
 
     public function __construct(
         ProductSchemeValidator $schemeValidator
@@ -20,7 +20,7 @@ class ProductCreator
             if(!$this->schemeValidator->isValid($value)){
                 throw new Exception("Invalid");
             }
-            $products[] = new Product($value['name'],$value['vendorCode'],$value['price'],$value['description']);
+            $products[] = new ProductModel($value['name'],$value['vendorCode'],$value['price'],$value['description']);
         }
         return $products;
     }

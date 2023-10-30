@@ -7,7 +7,7 @@ class FileCSVLoader
     private $headers;
 
 
-    public function getDataFromFile(string $filePath){
+    public function getDataFromFile(string $filePath):array{
         $dataArray = [];
         $data = $this->getData($filePath);
 

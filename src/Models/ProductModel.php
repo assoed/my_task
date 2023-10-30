@@ -1,8 +1,8 @@
 <?php
 
-namespace Entity;
+namespace Models;
 
-class Product
+class ProductModel
 {
     public string $name;
     public string $vendorCode;
@@ -16,4 +16,21 @@ class Product
         $this->description = $description;
     }
 
+    public function getProductById($productId){
+
+    }
+
+    getAllProducts(){
+
+    }
+    public function deleteProduct($productId){
+
+    }
+
+    public function createProduct($data){
+
+    }
+    public function updateProduct($productId,$data){
+
+    }
 }

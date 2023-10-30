@@ -8,8 +8,8 @@ class FileProductLoaderCSV
 {
 
 //    private $schemeValidator;
-    private  $fileCSVLoader;
-    private $productCreator;
+    private object $fileCSVLoader;
+    private object $productCreator;
     public function __construct(
         ProductSchemeValidator $schemeValidator,
         FileCSVLoader $fileCSVLoader,

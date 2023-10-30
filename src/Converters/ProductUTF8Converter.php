@@ -1,11 +1,11 @@
 <?php
 
 namespace Converters;
-use Entity\Product;
+use Models\ProductModel;
 
 class ProductUTF8Converter
 {
-    public function getconvertedDataToUTF8(Product $product): Product
+    public function getconvertedDataToUTF8(ProductModel $product): ProductModel
     {
         foreach ($product as $key => $value) {
             $product->$key  = mb_convert_encoding($value, 'UTF-8', 'Windows-1251');

@@ -2,11 +2,11 @@
 
 namespace Cleaners;
 
-use Entity\Product;
+use Models\ProductModel;
 
 class ProductCleaner
 {
-    public function getDataCleanSecurity(Product $product): Product
+    public function getDataCleanSecurity(ProductModel $product): ProductModel
     {
         foreach ($product as $key => $value) {
             $product->$key = trim(htmlspecialchars(strip_tags($value)));
