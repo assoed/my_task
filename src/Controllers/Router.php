@@ -20,7 +20,7 @@ class Router
         $this->routes[$pattern][$method] = ['controller' => $controller, 'action' => $action];
     }
 
-    public function handleRequest(string $url, string $method, $input)
+    public function handleRequest(string $url, string $method):void
     {
 
         $productValidator = new ProductValidator();
@@ -33,7 +33,7 @@ class Router
                 $route = $methods[$method];
 //                $controller = $route['controller'];
                 $action = $route['action'];
-                $controllerInstance = new ProductController($productValidator,$view,$productModel,$input);
+                $controllerInstance = new ProductController($productValidator,$view,$productModel);
 
                 $controllerInstance->$action($matches[0]);
                 return;

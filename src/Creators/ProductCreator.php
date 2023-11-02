@@ -17,8 +17,10 @@ class ProductCreator
     }
     public  function getProduct( array $data):Product
     {
-         $this->schemeValidator->isValid($data);
-        return new Product($data['id'],$data['name'],$data['vendorCode'],$data['price'],$data['description']);
+
+            $this->schemeValidator->isValid($data);
+            return new Product($data['id'],$data['name'],$data['vendorCode'],$data['price'],$data['description']);
+
     }
 
 

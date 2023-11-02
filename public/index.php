@@ -14,11 +14,12 @@ require '../src/Converters/ProductUTF8Converter.php';
 require '../src/Models/ProductModel.php';
 require '../src/Exceptions/AppException.php';
 require '../src/Entity/Product.php';
+
 use Controllers\Router;
 use Loaders\POSTProductLoader;
 use Validator\SchemeValidator\ProductSchemeValidator;
 use Controllers\ProductController;
-
+use Exceptions\AppException;
 //у меня возникла проблема с подключением файла routes.php, поэтом пока сделал так. потом исправлю.
 $router = new Router();
 $router->addRoute('#^/products/(\d+)#', 'GET', 'ProductController', 'getProductById');
@@ -30,13 +31,13 @@ $router->addRoute('#^/products/#', 'GET', 'ProductController', 'getAllProducts')
 $router->addRoute('#^/products/my#', 'GET', 'ProductController', 'getUsersProducts');
 
 
-$schemeValidator = new ProductSchemeValidator();
 
 $currentUrl = $_SERVER['REQUEST_URI'];
 
 $method = $_SERVER['REQUEST_METHOD'];
-$POSTProductLoader = new POSTProductLoader($schemeValidator);
 
-$product = $POSTProductLoader->getProductFromPost();
 
-$router->handleRequest($currentUrl, $method,$product);
+
+    $router->handleRequest($currentUrl, $method);
+
+

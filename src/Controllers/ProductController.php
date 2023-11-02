@@ -11,6 +11,7 @@ use Validator\SchemeValidator\ProductSchemeValidator;
 use Exceptions\AppException;
 use Validator\ProductValidator\ProductValidator;
 use Models\ProductModel;
+use Loaders\POSTProductLoader;
 class ProductController
 {
 
@@ -18,25 +19,30 @@ public $productValidator;
 public $productModel;
 public $view;
 public $input;
-    public function __construct(ProductValidator $productValidator,View $view,ProductModel $productModel,Product $input){
+    public function __construct(ProductValidator $productValidator,View $view,ProductModel $productModel){
     $this->productValidator =   $productValidator ;
     $this->productModel =  $productModel;
     $this->view =  $view;
-    $this->input = $input;
+//    $this->input = $input;
 
 }
     public function addProduct():void
     {
-
-
-        $this->productValidator->isProductValid($this->input);
-        $response = $this->productModel->createProduct($this->input);
+        $schemeValidator = new ProductSchemeValidator();
+        $POSTProductLoader = new POSTProductLoader($schemeValidator);
+        $product = $POSTProductLoader->getProductFromPost();
+        $this->productValidator->isProductValid($product);
+        $response = $this->productModel->createProduct($product);
         $this->view->render('default',$response);
+
+
     }
 
     public function deleteProduct():void{
+
         $response = $this->productModel->deleteProduct($_GET['id']);
-        $this->view->render('default',$response);
+        $this->view->render('defaultd',$response);
+
     }
     public function updateProduct():void{
 
