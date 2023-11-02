@@ -58,7 +58,7 @@ class ProductValidator
     private function isVendorCodeValid($vendorCode): bool
     {
 
-            if (!preg_match(self::VENDOR_CODE_PATTERN, $vendorCode) && mb_strlen($vendorCode) <= self::MAX_VENDOR_CODE_LENGTH) {
+            if (!(preg_match(self::VENDOR_CODE_PATTERN, $vendorCode) && mb_strlen($vendorCode) <= self::MAX_VENDOR_CODE_LENGTH)) {
 
                 throw new AppException('Vendor code is not correct', 400);
             }

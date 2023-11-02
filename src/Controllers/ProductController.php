@@ -41,7 +41,7 @@ public $input;
     public function deleteProduct():void{
 
         $response = $this->productModel->deleteProduct($_GET['id']);
-        $this->view->render('defaultd',$response);
+        $this->view->render('default',$response);
 
     }
     public function updateProduct():void{
@@ -64,7 +64,7 @@ public $input;
     public function getAllProducts():void
     {
         $response = $this->productModel->getAllProducts();
-        $this->view->render('/default',$response);
+        $this->view->render('default',$response);
     }
 
 }
