@@ -1,90 +1,64 @@
 <?php
 namespace Controllers;
 use Creators\ProductCreator;
+use Entity\Product;
 use Loaders\FileCSVLoader;
 use Loaders\FileXMLLoader;
 use Loaders\FileProductLoaderCSV;
 use Loaders\FileProductLoaderXML;
 use Validator\SchemeValidator\ProductSchemeValidator;
-use Loaders\POSTProductLoader;
-use Loaders\POSTLoader;
+
+use Exceptions\AppException;
 use Validator\ProductValidator\ProductValidator;
 use Models\ProductModel;
 class ProductController
 {
 
-//    public function getRequestStatus($dataType,$filePath){
-//
-//        $productValidator = new ProductValidator();
-//        $schemeValidator = new ProductSchemeValidator();
-//        $productCreator = new ProductCreator($schemeValidator);
-//
-//        $products = array();
-//        switch ($dataType){
-//            case 'csv':
-//                $fileCSVLoader = new FileCSVLoader();
-//                $productLoader = new FileProductLoaderCSV($schemeValidator,$fileCSVLoader,$productCreator);
-//                $products = $productLoader->getProductsFromCSV($filePath);
-//                break;
-//            case 'xml':
-//                $fileXMLLoader = new FileXMLLoader();
-//                $productLoader = new FileProductLoaderXML($schemeValidator,$fileXMLLoader,$productCreator);
-//                $products = $productLoader->getProductsFromXML($filePath);
-//                break;
-//            case 'post';
-//                $postLoader = new POSTLoader();
-//                $productLoader = new POSTProductLoader($schemeValidator,$postLoader,$productCreator);
-//                $products = $productLoader->getProductsFromPost();
-//
-//
-//        }
-//
-//
-//        return $productValidator->getValidationStatus($products);
-//    }
-    public function getRequestStatus($requestType):string{
+public $productValidator;
+public $productModel;
+public $view;
+public $input;
+    public function __construct(ProductValidator $productValidator,View $view,ProductModel $productModel,Product $input){
+    $this->productValidator =   $productValidator ;
+    $this->productModel =  $productModel;
+    $this->view =  $view;
+    $this->input = $input;
 
-        private  $productModel;
-        public function __construct (ProductModel $productModel)
-        {
-            $this->productModel = $productModel;
-        }
+}
+    public function addProduct():void
+    {
 
-        switch($requestType){
-            case 'POST':
-                if($productId){
 
-                   $product = $this->productModel->updateProduct($productId,$data);
-                }
-                else{
+        $this->productValidator->isProductValid($this->input);
+        $response = $this->productModel->createProduct($this->input);
+        $this->view->render('default',$response);
+    }
 
-                    $product = $this->productModel->createProduct($data);
-                }
+    public function deleteProduct():void{
+        $response = $this->productModel->deleteProduct($_GET['id']);
+        $this->view->render('default',$response);
+    }
+    public function updateProduct():void{
 
-                break;
-            case 'DELETE':
+        $response = $this->productModel->updateProduct($_GET['id'],$this->input);
+        $this->view->render('default',$response);
+    }
 
-                $product = $this->productModel->deleteProduct($_GET['id']);
-                break;
-            case 'PATCH':
-            case 'PUT':
+    public function getProductById():void
+    {
+        $response = $this->productModel->getProductById($_GET['id']);
+        $this->view->render('default',$response);
+    }
+    public function getUsersProducts():void
+    {
+        $response = $this->productModel->getUsersProducts($_GET['user_id']);
+        $this->view->render('default',$response);
+    }
 
-                $product = $this->productModel->updateProduct($_GET['id'],$data);
-                break;
-
-            case 'GET':
-                if($productId){
-
-                    $product = $this->productModel->getProduct($productId);
-
-                }
-                else{
-
-                    $product = $this->productModel->getAllProducts();
-                }
-                break;
-        }
-    return $product;
+    public function getAllProducts():void
+    {
+        $response = $this->productModel->getAllProducts();
+        $this->view->render('/default',$response);
     }
 
 }

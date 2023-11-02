@@ -4,6 +4,8 @@ namespace Validator\ProductValidator;
 
 use Cleaners\ProductCleaner;
 use Converters\ProductUTF8Converter;
+use Entity\Product;
+use Exceptions\AppException;
 
 class ProductValidator
 {
@@ -15,74 +17,50 @@ class ProductValidator
     const MAX_VENDOR_CODE_LENGTH = 10;
 
 
-    public function getValidationStatus(array $productsArray): array
-    {
-        $cleaner = new ProductCleaner();
-        $converter = new ProductUTF8Converter();
-        $validationStatus = [];
-        foreach ($productsArray as $data){
-        $data = $converter->getconvertedDataToUTF8($data);
-        $data = $cleaner->getDataCleanSecurity($data);
-        $validationStatus[] = $this->getInputDataValidationStatus($data);
-        }
-        return $validationStatus;
+    public function isProductValid(Product $product):bool{
+
+     $this->isVendorCodeValid($product->vendorCode);
+     $this->isPriceValid($product->price);
+     $this->isNameValid($product->name);
+     $this->isDescriptionValid($product->description);
+    return true;
     }
 
-    private function getInputDataValidationErrors(object $product): array
-    {
-        $errors = array();
-
-        if (!$this->isVendorCodeValid($product->vendorCode)) {
-            $errors[] = "Vendor_code doesnt match";
-        }
-
-        if (!preg_match(ProductValidator::PRICE_PATTERN, $product->price)) {
-            $errors[] = "Price doesnt match";
-        }
-
-        if (!$this->isNameValid($product->name)) {
-            $errors[] = "Name doesnt match";
-        }
-        if (!$this->isDescriptionValid($product->description)) {
-            $errors[] = "Description doesnt match";
-        }
-
-        return $errors;
-
-    }
-
-    private function getInputDataValidationStatus(object $product): array
-    {
-        $assocArrayForJson = array();
-        $errors = $this->getInputDataValidationErrors($product);
-        if (empty($errors)) {
-            $assocArrayForJson['success'] = 'true';
-        } else {
-            foreach ($errors as $error) {
-                $assocArrayForJson['success'] = 'false';
-                $assocArrayForJson['errors'][] = $error;
-            }
-        }
-        return $assocArrayForJson;
-    }
 
 
     private function isNameValid($name): bool
     {
-        return is_string($name) && strlen($name) >= ProductValidator::MIN_NAME_LENGTH && strlen($name) < ProductValidator::MAX_NAME_LENGTH;
+
+        if(!(is_string($name) && mb_strlen($name) > self::MIN_NAME_LENGTH || mb_strlen($name) < self::MAX_NAME_LENGTH)){
+            throw new AppException('Name is not correct',400);
+        }
+        return true;
     }
 
     private function isDescriptionValid(string $description): bool
     {
-        return strlen($description) < ProductValidator::MAX_DESCRIPTION_LENGTH;
+        if(!strlen($description) > self::MAX_DESCRIPTION_LENGTH){
+            throw new AppException('Description is not correct',400);
+        }
+        return true;
     }
 
-    function isVendorCodeValid($vendorCode): bool
+    private function isVendorCodeValid($vendorCode): bool
     {
-        return preg_match(ProductValidator::VENDOR_CODE_PATTERN, $vendorCode) && strlen($vendorCode) <= ProductValidator::MAX_VENDOR_CODE_LENGTH;
+
+        if(!preg_match(self::VENDOR_CODE_PATTERN, $vendorCode) && mb_strlen($vendorCode) <= self::MAX_VENDOR_CODE_LENGTH) {
+            throw new AppException('Vendor code is not correct',400);
+        }
+        return true;
     }
 
-
+    private function isPriceValid(string $price):bool
+    {
+        if(!preg_match(self::PRICE_PATTERN, $price)){
+            throw new AppException('Price is not correct',400);
+        }
+        return true;
+    }
 
 
 }

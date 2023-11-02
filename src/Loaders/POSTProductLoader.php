@@ -1,27 +1,23 @@
 <?php
 namespace Loaders;
 use Creators\ProductCreator;
+use Entity\Product;
 use Validator\SchemeValidator\ProductSchemeValidator;
 
 class POSTProductLoader
 {
     public function __construct(
-        ProductSchemeValidator $schemeValidator,
-        POSTLoader $postLoader,
-        ProductCreator $productCreator
-
+        ProductSchemeValidator $schemeValidator
     )
     {
         $this->schemeValidator = $schemeValidator;
-        $this->POSTLoader = $postLoader;
-        $this->productCreator = $productCreator;
-
     }
-    public function getProductsFromPost():array{
+    public function getProductFromPost():Product{
 
-        $data = $this->POSTLoader->getDataFromPost() ;
+        $queryString = file_get_contents('php://input');
+        parse_str($queryString,$data);
         $productCreator = new ProductCreator($this->schemeValidator);
 
-        return $productCreator->getProducts($data);
+        return $productCreator->getProduct($data);
     }
 }

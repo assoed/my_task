@@ -1,7 +1,9 @@
 <?php
 namespace Creators;
 use Exception;
-use Models\ProductModel;
+use Entity\Product;
+
+use Exceptions\AppException;
 use Validator\SchemeValidator\ProductSchemeValidator;
 
 class ProductCreator
@@ -13,15 +15,14 @@ class ProductCreator
     ){
         $this->schemeValidator = $schemeValidator;
     }
-    public  function getProducts($data)
+    public  function getProduct( array $data):Product
     {
-        $products = [];
-        foreach ($data as $value){
-            if(!$this->schemeValidator->isValid($value)){
-                throw new Exception("Invalid");
-            }
-            $products[] = new ProductModel($value['name'],$value['vendorCode'],$value['price'],$value['description']);
-        }
-        return $products;
+         $this->schemeValidator->isValid($data);
+        return new Product($data['id'],$data['name'],$data['vendorCode'],$data['price'],$data['description']);
     }
+
+
+
+
+
 }
