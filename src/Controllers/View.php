@@ -9,7 +9,7 @@ class View
     public function render(string $view, array $data = []): void
     {
         $response = array();
-        $viewPath = '../src/Viewsd/' . $view . '.php';
+        $viewPath = '../src/Views/' . $view . '.php';
 
         try {
             if (!file_exists($viewPath)) {
