@@ -2,6 +2,7 @@
 
 namespace Loaders;
 use Creators\ProductCreator;
+use Entity\Product;
 use Validator\SchemeValidator\ProductSchemeValidator;
 
 class  FileProductLoaderXML
@@ -16,12 +17,12 @@ class  FileProductLoaderXML
         $this->fileXMLLoader = $fileXMLLoader;
         $this->productCreator = $productCreator;
     }
-    public function getProductsFromXML(string $path):array{
+    public function getProductsFromXML(string $path):Product{
 
             $data = $this->fileXMLLoader->getDataFromFile($path);
 
             $productCreator = new ProductCreator($this->schemeValidator);
 
-            return $productCreator->getProducts($data);
+            return $productCreator->getProduct($data);
     }
 }

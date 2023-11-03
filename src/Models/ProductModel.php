@@ -83,11 +83,11 @@ class ProductModel
 
         public function createProduct($data):array {
         $data = array(
-            'id'            =>  $data['id'],
-            'name'          =>  $data['name'],
-            'vendorCode'    =>  $data['vendorCode'],
-            'price'         =>  $data['price'],
-            'description'   =>  $data['description']
+            'id'            =>  $data->id,
+            'name'          =>  $data->name,
+            'vendorCode'    =>  $data->vendorCode,
+            'price'         =>  $data->price,
+            'description'   =>  $data->description
 
         );
             $filePath = '/dataCSV.csv';

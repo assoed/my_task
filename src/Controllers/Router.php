@@ -5,8 +5,10 @@ namespace Controllers;
 require 'View.php';
 use Controllers\ProductController;
 
+use Exceptions\AppException;
 use Loaders\POSTProductLoader;
 use Models\ProductModel;
+use mysql_xdevapi\Exception;
 use Validator\ProductValidator\ProductValidator;
 use Validator\SchemeValidator\ProductSchemeValidator;
 use Controllers\View;
@@ -26,7 +28,7 @@ class Router
         $productValidator = new ProductValidator();
         $productModel = new ProductModel();
         $view = new View();
-
+        $isPageFound = false;
         foreach ($this->routes as $pattern => $methods) {
 
             if (preg_match($pattern, $url, $matches) && isset($methods[$method])) {
@@ -34,14 +36,15 @@ class Router
 //                $controller = $route['controller'];
                 $action = $route['action'];
                 $controllerInstance = new ProductController($productValidator,$view,$productModel,$data);
-
                 $controllerInstance->$action($matches[0]);
-                return;
+                $isPageFound = true;
+
             }
+
         }
-
-
-        http_response_code(404);
-        echo 'Error 404: Page not found';
+        if(!$isPageFound){
+            throw new AppException('Page not found',404);
+        }
+ ;
     }
 }
