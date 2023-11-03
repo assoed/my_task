@@ -29,7 +29,7 @@ class ProductModel
         if (!$productFound) {
             return ['status' => 404, 'message' => ['error' => 'The specified resource was not found']];
         } else {
-            return ['status' => 204, 'message' => ['success' => 'Product found'],'products'=>$productData];
+            return ['status' => 200, 'message' => ['success' => 'Product found'],'products'=>$productData];
         }
     }
 
@@ -81,13 +81,13 @@ class ProductModel
 
 
 
-        public function createProduct(Product $product): array {
+        public function createProduct($data): array {
         $data = array(
-            'id'            =>  $product->id,
-            'name'          =>  $product->name,
-            'vendorCode'    =>  $product->vendorCode,
-            'price'         =>  $product->price,
-            'description'   =>  $product->description
+            'id'            =>  $data['id'],
+            'name'          =>  $data['name'],
+            'vendorCode'    =>  $data['vendorCode'],
+            'price'         =>  $data['price'],
+            'description'   =>  $data['description']
 
         );
             $filePath = '/dataCSV.csv';

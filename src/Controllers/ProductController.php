@@ -12,25 +12,27 @@ use Exceptions\AppException;
 use Validator\ProductValidator\ProductValidator;
 use Models\ProductModel;
 use Loaders\POSTProductLoader;
+
 class ProductController
 {
 
 public $productValidator;
 public $productModel;
 public $view;
-public $input;
-    public function __construct(ProductValidator $productValidator,View $view,ProductModel $productModel){
+
+public $data;
+    public function __construct(ProductValidator $productValidator,View $view,ProductModel $productModel,array $data){
     $this->productValidator =   $productValidator ;
     $this->productModel =  $productModel;
     $this->view =  $view;
-//    $this->input = $input;
+    $this->data = $data;
 
 }
     public function addProduct():void
     {
         $schemeValidator = new ProductSchemeValidator();
-        $POSTProductLoader = new POSTProductLoader($schemeValidator);
-        $product = $POSTProductLoader->getProductFromPost();
+        $productCreator = new ProductCreator($schemeValidator);
+        $product = $productCreator->getProduct($this->data);
         $this->productValidator->isProductValid($product);
         $response = $this->productModel->createProduct($product);
         $this->view->render('default',$response);
@@ -40,24 +42,24 @@ public $input;
 
     public function deleteProduct():void{
 
-        $response = $this->productModel->deleteProduct($_GET['id']);
+        $response = $this->productModel->deleteProduct($this->data['id']);
         $this->view->render('default',$response);
 
     }
     public function updateProduct():void{
 
-        $response = $this->productModel->updateProduct($_GET['id'],$this->input);
+        $response = $this->productModel->updateProduct($this->data['id'],$this->data);
         $this->view->render('default',$response);
     }
 
     public function getProductById():void
     {
-        $response = $this->productModel->getProductById($_GET['id']);
+        $response = $this->productModel->getProductById($this->data['id']);
         $this->view->render('default',$response);
     }
     public function getUsersProducts():void
     {
-        $response = $this->productModel->getUsersProducts($_GET['user_id']);
+        $response = $this->productModel->getUsersProducts($this->data['user_id']);
         $this->view->render('default',$response);
     }
 

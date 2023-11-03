@@ -35,9 +35,10 @@ $router->addRoute('#^/products/my#', 'GET', 'ProductController', 'getUsersProduc
 $currentUrl = $_SERVER['REQUEST_URI'];
 
 $method = $_SERVER['REQUEST_METHOD'];
+$queryString = file_get_contents('php://input');
+parse_str($queryString,$data);
 
 
-
-    $router->handleRequest($currentUrl, $method);
+    $router->handleRequest($currentUrl, $method,$data);
 
 
