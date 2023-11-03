@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator\ProductValidator;
+namespace App\Validator\ProductValidator;
 
 use Cleaners\ProductCleaner;
 use Converters\ProductUTF8Converter;

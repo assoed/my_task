@@ -1,6 +1,6 @@
 <?php
 
-namespace Loaders;
+namespace App\Loaders;
 class FileXMLLoader
 {
     public function getDataFromFile($filePath):array{

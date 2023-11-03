@@ -1,6 +1,6 @@
 <?php
 
-namespace Converters;
+namespace App\Converters;
 use Models\ProductModel;
 
 class ProductUTF8Converter

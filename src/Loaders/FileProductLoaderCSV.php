@@ -1,6 +1,6 @@
 <?php
 
-namespace Loaders;
+namespace App\Loaders;
 use Creators\ProductCreator;
 use Validator\SchemeValidator\ProductSchemeValidator;
 

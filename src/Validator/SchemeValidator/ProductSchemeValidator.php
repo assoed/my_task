@@ -1,8 +1,8 @@
 <?php
 
-namespace Validator\SchemeValidator;
+namespace App\Validator\SchemeValidator;
 
-use Exceptions\AppException;
+use App\Exceptions\AppException;
 
 class ProductSchemeValidator
 {

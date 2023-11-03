@@ -1,17 +1,17 @@
 <?php
-namespace Controllers;
-use Creators\ProductCreator;
-use Entity\Product;
-use Loaders\FileCSVLoader;
-use Loaders\FileXMLLoader;
-use Loaders\FileProductLoaderCSV;
-use Loaders\FileProductLoaderXML;
-use Validator\SchemeValidator\ProductSchemeValidator;
+namespace App\Controllers;
+use App\Creators\ProductCreator;
+use App\Entity\Product;
+use App\Loaders\FileCSVLoader;
+use App\Loaders\FileXMLLoader;
+use App\Loaders\FileProductLoaderCSV;
+use App\Loaders\FileProductLoaderXML;
+use App\Validator\SchemeValidator\ProductSchemeValidator;
 
-use Exceptions\AppException;
-use Validator\ProductValidator\ProductValidator;
-use Models\ProductModel;
-use Loaders\POSTProductLoader;
+use App\Exceptions\AppException;
+use App\Validator\ProductValidator\ProductValidator;
+use App\Models\ProductModel;
+use App\Loaders\POSTProductLoader;
 
 class ProductController
 {
