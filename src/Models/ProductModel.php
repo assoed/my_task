@@ -12,7 +12,7 @@ use Exceptions\AppException;
 class ProductModel
 {
 
-    public function getProductById($productId){
+    public function getProductById(int $productId):array{
         $productFound = false;
         $productData = array();
         $fileCSVLoader = new FileCSVLoader();
@@ -33,7 +33,7 @@ class ProductModel
         }
     }
 
-    public function getUsersProducts($userId){
+    public function getUsersProducts(int $userId):array{
         $productFound = false;
         $productData = array();
         $fileCSVLoader = new FileCSVLoader();
@@ -52,14 +52,14 @@ class ProductModel
             return ['status' => 204, 'message' => ['success' => 'Product successfully updated']];
         }
     }
-    public function getAllProducts(){
+    public function getAllProducts():array{
 
     $fileCSVLoader = new FileCSVLoader();
     $products = $fileCSVLoader->getDataFromFile('/dataCSV.csv');
 
     return ['status' => 200, 'products'=>$products];
     }
-    public function deleteProduct($productId): array
+    public function deleteProduct($productId):array
     {
         $productFound = false;
         $fileCSVLoader = new FileCSVLoader();
@@ -81,7 +81,7 @@ class ProductModel
 
 
 
-        public function createProduct($data): array {
+        public function createProduct($data):array {
         $data = array(
             'id'            =>  $data['id'],
             'name'          =>  $data['name'],

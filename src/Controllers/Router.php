@@ -15,7 +15,7 @@ class Router
 {
     private array $routes = [];
 
-    public function addRoute(string $pattern, string $method, string $controller, string $action)
+    public function addRoute(string $pattern, string $method, string $controller, string $action):void
     {
         $this->routes[$pattern][$method] = ['controller' => $controller, 'action' => $action];
     }

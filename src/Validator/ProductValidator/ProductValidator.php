@@ -43,7 +43,7 @@ class ProductValidator
         return true;
     }
 
-    private function isDescriptionValid(string $description): bool
+    private function isDescriptionValid(string $description):bool
     {
 
             if (!(strlen($description) <= self::MAX_DESCRIPTION_LENGTH)) {

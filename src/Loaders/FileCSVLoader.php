@@ -38,7 +38,7 @@ class FileCSVLoader
         fclose($fileHandle);
     }
 
-    public function setDataInFile(string $filePath,array $data){
+    public function setDataInFile(string $filePath,array $data):void{
         $filePath = __DIR__ . '../../..'.$filePath;
         $fileHandle = fopen($filePath, 'w');
         fputcsv($fileHandle, $this->headers, ';');
