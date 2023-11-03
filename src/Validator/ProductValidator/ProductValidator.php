@@ -23,8 +23,8 @@ class ProductValidator
             $this->isPriceValid($product->price);
             $this->isNameValid($product->name);
             $this->isDescriptionValid($product->description);
-            return true;   
-        
+
+            return true;
 
     }
 
@@ -38,8 +38,6 @@ class ProductValidator
 
             }
 
-
-
         return true;
     }
 
@@ -50,7 +48,6 @@ class ProductValidator
 
                 throw new AppException('Description is not correct', 400);
             }
-
 
         return true;
     }
@@ -63,8 +60,6 @@ class ProductValidator
                 throw new AppException('Vendor code is not correct', 400);
             }
 
-
-
         return true;
     }
 
@@ -75,8 +70,6 @@ class ProductValidator
 
                 throw new AppException('Price is not correct', 400);
             }
-
-
 
         return true;
     }

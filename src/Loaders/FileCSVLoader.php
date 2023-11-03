@@ -29,8 +29,7 @@ class FileCSVLoader
         $this->headers = fgetcsv($fileHandle, 0, ';');
 
         while (($data = fgetcsv($fileHandle, 0, ';')) !== false) {
-//            var_dump($data);
-            // Создаем ассоциативный массив, используя заголовки как ключи
+
             $row = array_combine($this->headers, $data);
             yield $row;
         }
