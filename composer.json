@@ -18,7 +18,7 @@
       "App\\Models\\": "src/Models/",
       "App\\Validator\\": "src/Validator/",
       "App\\Exceptions\\": "src/Exceptions/",
-      "App\\Loggers\\": "src/Loggers/",
+      "App\\Loggers\\": "src/Loggers/"
     }
   }
 }
