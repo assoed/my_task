@@ -1,16 +1,11 @@
 <?php
 
 namespace App\Controllers;
-//require 'ProductController.php';
-//require 'View.php';
-use App\Controllers\ProductController;
 
 use App\Exceptions\AppException;
-use App\Loaders\POSTProductLoader;
 use App\Models\ProductModel;
 use App\Validator\ProductValidator\ProductValidator;
-use App\Validator\SchemeValidator\ProductSchemeValidator;
-use App\Controllers\View;
+
 
 class Router
 {
@@ -32,7 +27,6 @@ class Router
 
             if (preg_match($pattern, $url, $matches) && isset($methods[$method])) {
                 $route = $methods[$method];
-//                $controller = $route['controller'];
                 $action = $route['action'];
                 $controllerInstance = new ProductController($productValidator,$view,$productModel,$data);
                 $controllerInstance->$action($matches[0]);

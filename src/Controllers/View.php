@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Exceptions\AppException;
+use App\Exceptions\AppException;
 
 class View
 {
@@ -11,7 +11,7 @@ class View
         $response = array();
         $viewPath = '../src/Views/' . $view . '.php';
 
-        try {
+
             if (!file_exists($viewPath)) {
                 throw new AppException('View not found', 404);
             }
@@ -22,8 +22,6 @@ class View
             require_once $viewPath;
             extract($data);
 
-        } catch (AppException $e) {
-            $e->log();
-        }
+
     }
 }
