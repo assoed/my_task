@@ -2,10 +2,9 @@
 
 namespace App\Validator\ProductValidator;
 
-use Cleaners\ProductCleaner;
-use Converters\ProductUTF8Converter;
-use Entity\Product;
-use Exceptions\AppException;
+
+use App\Entity\Product;
+use App\Exceptions\AppException;
 
 class ProductValidator
 {

@@ -3,6 +3,7 @@
 require_once '../vendor/autoload.php';
 use App\Controllers\Router;
 
+use App\Loggers\ProductLogger;
 
 use App\Exceptions\AppException;
 

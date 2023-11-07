@@ -2,8 +2,14 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Creators" isTestSource="false" packagePrefix="Factories" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Controllers" isTestSource="false" packagePrefix="App\Controllers\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Exceptions" isTestSource="false" packagePrefix="App\Exceptions\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Loaders" isTestSource="false" packagePrefix="App\Loaders\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Models" isTestSource="false" packagePrefix="App\Models\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Validator" isTestSource="false" packagePrefix="App\Validator\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Loggers" isTestSource="false" packagePrefix="App\Loggers\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Validator/SchemeValidator" isTestSource="false" packagePrefix="App\Validator\SchemeValidator\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
