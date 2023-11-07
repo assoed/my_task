@@ -2,16 +2,11 @@
 
 
 namespace App\Controllers;
-//require 'ProductController.php';
-//require 'View.php';
-use App\Controllers\ProductController;
 
 use App\Exceptions\AppException;
-use App\Loaders\POSTProductLoader;
 use App\Models\ProductModel;
 use App\Validator\ProductValidator\ProductValidator;
-use App\Validator\SchemeValidator\ProductSchemeValidator;
-use App\Controllers\View;
+
 
 
 class Router

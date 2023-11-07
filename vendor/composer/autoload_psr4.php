@@ -6,9 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Validator\\SchemeValidator\\' => array($baseDir . '/src/Validator/SchemeValidator'),
     'App\\Validator\\' => array($baseDir . '/src/Validator'),
     'App\\Models\\' => array($baseDir . '/src/Models'),
+    'App\\Loggers\\' => array($baseDir . '/src/Loggers'),
     'App\\Loaders\\' => array($baseDir . '/src/Loaders'),
     'App\\Exceptions\\' => array($baseDir . '/src/Exceptions'),
+    'App\\Creators\\' => array($baseDir . '/src/Creators'),
     'App\\Controllers\\' => array($baseDir . '/src/Controllers'),
+    'App\\' => array($baseDir . '/src'),
 );

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Creators\ProductCreator;
 use App\Validator\SchemeValidator\ProductSchemeValidator;
 
@@ -27,6 +29,7 @@ public $data;
     {
 
             $schemeValidator = new ProductSchemeValidator();
+
             $productCreator = new ProductCreator($schemeValidator);
             $product = $productCreator->getProduct($this->data);
             $this->productValidator->isProductValid($product);

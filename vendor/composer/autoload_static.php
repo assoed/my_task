@@ -9,15 +9,23 @@ class ComposerStaticInit057e032e2095abbd20479c218e641925
     public static $prefixLengthsPsr4 = array (
         'A' => 
         array (
+            'App\\Validator\\SchemeValidator\\' => 30,
             'App\\Validator\\' => 14,
             'App\\Models\\' => 11,
+            'App\\Loggers\\' => 12,
             'App\\Loaders\\' => 12,
             'App\\Exceptions\\' => 15,
+            'App\\Creators\\' => 13,
             'App\\Controllers\\' => 16,
+            'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'App\\Validator\\SchemeValidator\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Validator/SchemeValidator',
+        ),
         'App\\Validator\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Validator',
@@ -25,6 +33,10 @@ class ComposerStaticInit057e032e2095abbd20479c218e641925
         'App\\Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Models',
+        ),
+        'App\\Loggers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Loggers',
         ),
         'App\\Loaders\\' => 
         array (
@@ -34,9 +46,17 @@ class ComposerStaticInit057e032e2095abbd20479c218e641925
         array (
             0 => __DIR__ . '/../..' . '/src/Exceptions',
         ),
+        'App\\Creators\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Creators',
+        ),
         'App\\Controllers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Controllers',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

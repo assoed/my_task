@@ -1,10 +1,10 @@
 <?php
 namespace App\Creators;
 use Exception;
-use Entity\Product;
+use App\Entity\Product;
 
-use Exceptions\AppException;
-use Validator\SchemeValidator\ProductSchemeValidator;
+use App\Exceptions\AppException;
+use App\Validator\SchemeValidator\ProductSchemeValidator;
 
 class ProductCreator
 {

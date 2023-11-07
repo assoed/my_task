@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Exceptions\AppException;
+use App\Exceptions\AppException;
 
 class View
 {
