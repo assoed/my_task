@@ -1,7 +1,7 @@
 <?php
 
 namespace Controllers;
-//require 'ProductController.php';
+
 require 'View.php';
 use Controllers\ProductController;
 
@@ -33,7 +33,6 @@ class Router
 
             if (preg_match($pattern, $url, $matches) && isset($methods[$method])) {
                 $route = $methods[$method];
-//                $controller = $route['controller'];
                 $action = $route['action'];
                 $controllerInstance = new ProductController($productValidator,$view,$productModel,$data);
                 $controllerInstance->$action($matches[0]);

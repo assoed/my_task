@@ -14,13 +14,15 @@ require '../src/Converters/ProductUTF8Converter.php';
 require '../src/Models/ProductModel.php';
 require '../src/Exceptions/AppException.php';
 require '../src/Entity/Product.php';
-
+require '../src/Loggers/ProductLogger.php';
 use Controllers\Router;
 use Loaders\POSTProductLoader;
 use Validator\SchemeValidator\ProductSchemeValidator;
 use Controllers\ProductController;
 use Exceptions\AppException;
+use Loggers\ProductLogger;
 //у меня возникла проблема с подключением файла routes.php, поэтом пока сделал так. потом исправлю.
+//я исправил это в следующем задании
 $router = new Router();
 $router->addRoute('#^/products/(\d+)#', 'GET', 'ProductController', 'getProductById');
 $router->addRoute('#^/products/(\d+)#', 'PUT', 'ProductController', 'updateProduct');
@@ -38,11 +40,13 @@ $method = $_SERVER['REQUEST_METHOD'];
 $queryString = file_get_contents('php://input');
 parse_str($queryString,$data);
 
+
 try {
     $router->handleRequest($currentUrl, $method,$data);
 }
     catch (AppException $e){
-    $e->log();
+        $productLogger = new ProductLogger();
+        $productLogger->logProductErrors($e);
 }
 
 

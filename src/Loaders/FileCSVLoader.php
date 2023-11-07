@@ -30,8 +30,8 @@ class FileCSVLoader
 
         while (($data = fgetcsv($fileHandle, 0, ';')) !== false) {
 
-            $row = array_combine($this->headers, $data);
-            yield $row;
+            yield array_combine($this->headers, $data);
+
         }
 
         fclose($fileHandle);
