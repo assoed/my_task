@@ -3,6 +3,10 @@
 namespace App\Loggers;
 
 
+=======
+use Exceptions\AppException;
+
+
 class ProductLogger
 {
 
@@ -14,4 +18,4 @@ class ProductLogger
 
         file_put_contents($logFile, $errorMessage, FILE_APPEND);
     }
-}
+
