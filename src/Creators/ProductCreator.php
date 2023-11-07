@@ -8,7 +8,7 @@ use App\Validator\SchemeValidator\ProductSchemeValidator;
 
 class ProductCreator
 {
-    private object $schemeValidator;
+    private ProductSchemeValidator $schemeValidator;
 
     public function __construct(
         ProductSchemeValidator $schemeValidator

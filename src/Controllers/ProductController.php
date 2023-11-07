@@ -27,7 +27,7 @@ public $data;
 }
     public function addProduct():void
     {
-        try {
+
             $schemeValidator = new ProductSchemeValidator();
 
             $productCreator = new ProductCreator($schemeValidator);
@@ -35,10 +35,10 @@ public $data;
             $this->productValidator->isProductValid($product);
             $response = $this->productModel->createProduct($product);
             $this->view->render('default',$response);
-        }
-        catch (AppException $e){
-            $e->log();
-        }
+
+//        catch (AppException $e){
+//            $e->log();
+//        }
 
 
     }
