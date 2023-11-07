@@ -1,6 +1,6 @@
 <?php
 
-namespace Loggers;
+namespace App\Loggers;
 
 use Exceptions\AppException;
 
