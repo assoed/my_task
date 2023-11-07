@@ -1,7 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 use App\Controllers\Router;
-
+use App\Loggers\ProductLogger;
 use App\Exceptions\AppException;
 
 $router = new Router();
@@ -17,7 +17,8 @@ try {
     $router->handleRequest($currentUrl, $method,$data);
 }
     catch (AppException $e){
-    $e->log();
+        $productLogger = new ProductLogger();
+        $productLogger->logProductErrors($e);
 }
 
 
