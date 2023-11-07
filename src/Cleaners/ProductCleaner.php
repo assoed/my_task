@@ -1,6 +1,6 @@
 <?php
 
-namespace Cleaners;
+namespace App\Cleaners;
 
 use Models\ProductModel;
 

@@ -1,14 +1,12 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-use Creators\ProductCreator;
-use Entity\Product;
-use Loaders\FileCSVLoader;
-use Loaders\POSTLoader;
-use Loaders\POSTProductLoader;
-use Validator\SchemeValidator\ProductSchemeValidator;
-use Exceptions\AppException;
+use App\Creators\ProductCreator;
+use App\Entity\Product;
+use App\Loaders\FileCSVLoader;
+use App\Validator\SchemeValidator\ProductSchemeValidator;
+use App\Exceptions\AppException;
 class ProductModel
 {
 

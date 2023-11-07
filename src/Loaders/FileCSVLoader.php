@@ -1,5 +1,5 @@
 <?php
-namespace Loaders;
+namespace App\Loaders;
 use Generator;
 
 class FileCSVLoader
