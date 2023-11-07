@@ -19,9 +19,7 @@
       "App\\Models\\": "src/Models/",
       "App\\Validator\\": "src/Validator/",
       "App\\Exceptions\\": "src/Exceptions/",
-
-      "App\\Validator\\SchemeValidator\\": "src/Validator/SchemeValidator"
-
+      "App\\Validator\\SchemeValidator\\": "src/Validator/SchemeValidator",
       "App\\Loggers\\": "src/Loggers/",
       "App\\Creators\\": "src/Creators/",
       "App\\Entity\\": "src/Entity/"
