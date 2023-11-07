@@ -11,7 +11,7 @@ class ProductSchemeValidator
 
     public function isValid(array $data):bool
     {
-        try {
+
             if (empty($data)){
                 throw new AppException('Empty input', 400);
             }
@@ -27,11 +27,8 @@ class ProductSchemeValidator
                 }
             }
             return true;
-        }
-        catch (AppException $e){
-            $e->log();
-        }
-        return false;
+
+
     }
 }
 
